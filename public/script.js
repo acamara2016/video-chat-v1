@@ -72,10 +72,11 @@ const addVideoStream = (video, stream) => {
 
 let text = document.querySelector("#chat_message");
 let send = document.getElementById("send");
-let messages = document.querySelector(".messages");
+let messages = document.getElementsByClassName("messages");
 
 send.addEventListener("click", (e) => {
   if (text.value.length !== 0) {
+    console.log(text.value);
     socket.emit("message", text.value);
     text.value = "";
   }
@@ -129,6 +130,7 @@ inviteButton.addEventListener("click", (e) => {
 });
 
 socket.on("createMessage", (message, userName) => {
+  console.log('creating new message')
   messages.innerHTML =
     messages.innerHTML +
     `<div class="message">
